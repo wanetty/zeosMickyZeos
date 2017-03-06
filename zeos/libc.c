@@ -68,9 +68,8 @@ int gettime(){
 void perror()
 {
   char buffer[256];
-
   itoa(errno, buffer);
-
+  
   write(1, buffer, strlen(buffer));
 }
 

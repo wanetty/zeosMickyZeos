@@ -12,6 +12,7 @@
 Gate idt[IDT_ENTRIES];
 Register    idtR;
 
+extern int zeos_ticks;
 
 
 char char_map[] =
