@@ -4,6 +4,7 @@
 #include <types.h>
 #include <interrupt.h>
 #include <segment.h>
+#include <system.h>
 #include <hardware.h>
 #include <io.h>
 
@@ -12,7 +13,6 @@
 Gate idt[IDT_ENTRIES];
 Register    idtR;
 
-extern int zeos_ticks;
 
 
 char char_map[] =
@@ -113,7 +113,7 @@ void keyboard_routine () {
 
 void clock_routine() {
     zeos_show_clock();
-    zeos_ticks = zeos_ticks + 1;
+    zeos_ticks++;
 }
     
 

@@ -46,10 +46,9 @@ int strlen(char *a)
 int write(int fd,char *buffer, int size){
   //int aux = 4;
   int aux2;
-  __asm__("movl $4, %%eax;"
-	  "INT $0x80;"
+  __asm__("INT $0x80;"
 	 :"=a"(aux2)
-	 :"b"(fd), "c"(buffer),"d"(size));
+	 :"b"(fd), "c"(buffer),"d"(size), "a"(4));
 	 
  if(aux2 < 0){
     errno = -aux2;
@@ -70,7 +69,7 @@ void perror()
   char buffer[256];
   itoa(errno, buffer);
   
-  write(1, buffer, strlen(buffer));
+  write(1, buffer, sizeof(buffer));
 }
 
 
